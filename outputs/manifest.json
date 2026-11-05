@@ -1,0 +1,71 @@
+{
+  "sources": {
+    "molecular_utils.py": "1ec578182831ad50674d2f89f8f65d9b5227ac42bbf53f70497adbfd3893ef5d",
+    "run_experiments.py": "bd2e1d84e9a6a3643cb3d9fc551ce125c46e767fc6f3d9da68bd4e6068fc568f"
+  },
+  "config": {
+    "hidden": 64,
+    "layers": 3,
+    "dropout": 0.2,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 64,
+    "max_epochs": 80,
+    "patience": 15,
+    "fingerprint_radius": 2,
+    "fingerprint_bits": 2048,
+    "baseline_C": [
+      0.01,
+      0.1,
+      1.0,
+      10.0
+    ],
+    "split_seed": 2026,
+    "model_seeds": [
+      17,
+      29,
+      43
+    ],
+    "threshold_metric": "balanced_accuracy",
+    "checkpoint_metric": "validation_roc_auc"
+  },
+  "artifacts": {
+    "outputs/evaluation_lock.json": "7e86247242ca8f707b4c1853db750d05241f163cc1accfd848be06092fb0c84c",
+    "outputs/summary.json": "e66c4c5fe215035f601f363280b39ea6c911395dbe6a3e1e52a2fab015a1841b",
+    "outputs/tables/random_gnn_17_predictions.csv": "830610d63f8b4b36c8b6ee8a678fc44bb1c52930a5431352810ebae4ef899f58",
+    "outputs/tables/random_gnn_43_history.csv": "48d6395db191d9f0540635696ac79c2efd57c7994d6ab384b0bef9254b39dc0c",
+    "outputs/tables/scaffold_gnn_17_predictions.csv": "579e54f11e089d5b033170e751d9142d8f19e02c4796e8a8e31646f59e563670",
+    "outputs/tables/split_manifest.csv": "b38ae54de2a7a0fd167120a0dfec11f03f0c9c45125c10658e728407d57d443c",
+    "outputs/tables/molecules.csv": "8d885054a47350272b901fae305b93ea8bd14c95a519b72225859ff7356ff43a",
+    "outputs/tables/canonical_duplicates.csv": "419b9f9b663d005822c01ccdbcd8374ed84c4af77ccfc135810c2525bb285ce4",
+    "outputs/tables/random_gnn_29_history.csv": "76e0c1620f5856d50eab9ddd7be98dd6bf2c64d53cfd9e889198d03c44dc902c",
+    "outputs/tables/scaffold_lr_predictions.csv": "670cbf0ea329750ae4c9c0c76a4158d05d4af36e69c45b5288eff197ad70a388",
+    "outputs/tables/error_details.csv": "e2be3807ab90b9d7a4496bb4143942ac6cfa0e941280d922883533540e8fb4b0",
+    "outputs/tables/seed_aggregate.csv": "f6288ea237d0a1c34299fc3b6ba2283902c3b73113c0e3bf8af80d437814d9e0",
+    "outputs/tables/random_gnn_17_history.csv": "d1755561b6fa6c8847585b0ffa1b92ea17f6c9a97f1bbf22503f8fb487d81976",
+    "outputs/tables/split_summary.csv": "d486189a16ca90c57081e4c1449a4f077a31b4f2df50dbe27fe1fabcf9aab066",
+    "outputs/tables/examples.csv": "81ba758e430cc5cf02f841031af7d4ac00942bee4c0f32e59d105122f75982d5",
+    "outputs/tables/random_gnn_29_predictions.csv": "1aebab5bec778d543780ba2387439b9bbf2def7498c6ce1cb18324f8b54c58a7",
+    "outputs/tables/scaffold_gnn_43_history.csv": "6bf992d411cc480555d1ca42bbe01ddc20954f0050a7964d8270f9087abfaf64",
+    "outputs/tables/comparison.csv": "be1e9ec72c5835162cf504ae44d438acec90243031b13a0cdba96529dfcef5d0",
+    "outputs/tables/scaffold_gnn_29_predictions.csv": "592d36ea675c42364d3e59c5bb34ee37d98390b09ba7c9c7e65c4693d31bc938",
+    "outputs/tables/scaffold_gnn_17_history.csv": "7aa8d495582360094d4e888e470c1cb9519a4b73cf9da9026e23c90493cb638b",
+    "outputs/tables/random_gnn_43_predictions.csv": "d187d7d06b6c7830f219458b80b0e621eb98a706b9ea627e6725c2a07632ffd5",
+    "outputs/tables/scaffold_gnn_29_history.csv": "54177374af36948fbb74390a874b482d307f86f243d7fa7ffee5e11cb3c2653e",
+    "outputs/tables/random_lr_predictions.csv": "805cbdc8eb696f53d6f957027767788debb2b8795f8330f76d60cd3afa9f8dd8",
+    "outputs/tables/scaffold_gnn_43_predictions.csv": "aefbb8c34fb941922f332711693a967636af6385fbf2832ffab06db33973c1ca",
+    "outputs/models/random_gnn_43.pt": "be39b0a46a07e11723607aa7786338d71fc4f4a17fe6370dc3875a99ef93bdc3",
+    "outputs/models/scaffold_gnn_43.pt": "3df6f120d5448b10624ba5685eb51d619b791125635b20aab17ac43a0896701b",
+    "outputs/models/scaffold_gnn_17.pt": "8fe8e53f1d09d4c4b36d285576b5417ced395c16c1e835296f0c1f63d713c5cd",
+    "outputs/models/random_gnn_17.pt": "78f63d1c5cad946d5036249f1bd975bb3149ff9c989a934593d1a13767e505e2",
+    "outputs/models/random_gnn_29.pt": "a4869dab492a4714cc79188d38fc8f7d8e92971f5a46117b7c8f5ea3e6a0c45c",
+    "outputs/models/scaffold_gnn_29.pt": "ecb58ed264af1712a3ed9df8a5bfeffbe87ed0b40536219efda3bcb83b5c3cd4",
+    "outputs/figures/molecule_examples.png": "50332005357dc361054723beda655d8b59f80b89c909403b065f5b065a18355d",
+    "outputs/figures/test_curves.png": "3f58dde30dd66d73a333b20c916112bed6b000a5139a6d3df32928add5971c96",
+    "outputs/figures/size_distributions.png": "8b8e5fc0b658180f3ffd0c95129c3d2ee64babdaa08294bc63f9aa096ed20fa4",
+    "outputs/figures/training_curves.png": "9cbccc37c6ec0009424ba28090b77fe308e98518e17b835e26999109556cbbdb",
+    "outputs/figures/graph_views.png": "7815e7f5f6b9ecf640391e9a97f0d7e43bf765a6766080062b263e1b38b830e0",
+    "outputs/figures/confusion_matrices.png": "b8b4bc29b1579b6db9a9a400fe26320f83886b914195986f376c0d090acd4d0e",
+    "outputs/figures/error_pairs.png": "b7e956e17b1a7643d22d48c3932b8dddcfeaea39e44d414426a739fcf88a83ed"
+  }
+}
