@@ -59,6 +59,7 @@ def inspect_figures(graphs,molecules,frame):
         examples.extend(selected.sort_values(['length','record_id']).head(3).record_id.tolist())
     frame.iloc[examples].to_csv(TABLES/'examples.csv',index=False)
     image = Draw.MolsToGridImage([molecules[i] for i in examples],molsPerRow=3,
+                                 useSVG=False,returnPNG=False,
                                  subImgSize=(330,220),
                                  legends=[f'ID {i}; label {frame.label.iloc[i]}' for i in examples])
     image.save(FIG/'molecule_examples.png')
