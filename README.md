@@ -13,7 +13,7 @@ Cleaning starts from 2,050 raw records. Eleven invalid structures, 54 redundant 
 | Model | Random ROC-AUC | Scaffold ROC-AUC | Random average precision | Scaffold average precision |
 |---|---:|---:|---:|---:|
 | Morgan logistic regression | 0.9422 | 0.8725 | 0.9793 | 0.9589 |
-| GINE, three seeds | 0.9378 ± 0.0046 | 0.8827 ± 0.0027 | 0.9772 ± 0.0035 | 0.9478 ± 0.0039 |
+| GINE, three seeds | 0.9379 ± 0.0078 | 0.8899 ± 0.0124 | 0.9723 ± 0.0089 | 0.9556 ± 0.0127 |
 
 GNN uncertainty is sample standard deviation across seeds 17, 29 and 43 on fixed partitions. This experiment shows no consistent GNN advantage. The random/scaffold contrast also changes chemical composition and prevalence; it does not isolate a causal effect or quantify performance on new experimental data.
 
@@ -45,7 +45,7 @@ uv pip install --python .venv/bin/python -r requirements.txt
 .venv/bin/python -m unittest -v test_molecular
 ```
 
-The notebook downloads BBBP through `torch_geometric.datasets.MoleculeNet` on its first run. No separate CSV is required. Training uses categorical embeddings, three residual GINE layers of width 64, mean pooling, weighted binary cross-entropy and Adam. Settings are fixed in `CONFIG`; split seed is 2026. Device selection benchmarks a common training-only batch on CPU and available MPS. The recorded Apple M4 Max run selected CPU and completed the full experiment in 95 seconds, including 87 seconds of model selection.
+The notebook downloads BBBP through `torch_geometric.datasets.MoleculeNet` on its first run. No separate CSV is required. Training uses categorical embeddings, three residual GINE layers of width 64, mean pooling, weighted binary cross-entropy and Adam. Settings are fixed in `CONFIG`; split seed is 2026. Device selection benchmarks a common training-only batch on CPU and available MPS. The recorded Apple M4 Max run selected MPS and completed the full experiment in 128 seconds, including 122 seconds of model selection. MPS scatter reductions are not fully deterministic, so fixed seeds do not guarantee identical floating-point results. The timing benchmark can select a different backend on another run; the recorded device is saved in the output summary.
 
 `run_pipeline(reuse_results=True)` reuses a complete local experiment only when code, configuration and artifact hashes match. Checkpoints are excluded from Git, so a fresh clone trains all models. Set `reuse_results=False` for an explicit fresh experiment. A source or recorded-artifact change invalidates the cache. `outputs/comparison_explorer.html` is generated locally as a standalone interactive chart; `outputs/blood_brain_barrier.html` is the notebook export.
 

@@ -56,36 +56,36 @@
     },
     "random_gnn_17": {
       "seed": 17,
-      "threshold": 0.7999999999999999,
-      "best_epoch": 80,
+      "threshold": 0.7649999999999999,
+      "best_epoch": 79,
       "epochs_run": 80,
-      "validation_roc_auc": 0.889015873015873,
-      "validation_balanced_accuracy": 0.8073015873015873,
+      "validation_roc_auc": 0.8997460317460317,
+      "validation_balanced_accuracy": 0.826031746031746,
       "pos_weight": 0.30952380952380953,
       "parameters": 42820,
-      "training_seconds": 15.20468129098299
+      "training_seconds": 24.67638837499544
     },
     "random_gnn_29": {
       "seed": 29,
-      "threshold": 0.705,
-      "best_epoch": 77,
+      "threshold": 0.6449999999999999,
+      "best_epoch": 74,
       "epochs_run": 80,
-      "validation_roc_auc": 0.8955555555555557,
-      "validation_balanced_accuracy": 0.8174603174603174,
+      "validation_roc_auc": 0.9083809523809524,
+      "validation_balanced_accuracy": 0.8420634920634921,
       "pos_weight": 0.30952380952380953,
       "parameters": 42820,
-      "training_seconds": 14.701929792005103
+      "training_seconds": 21.628068665973842
     },
     "random_gnn_43": {
       "seed": 43,
-      "threshold": 0.42499999999999993,
-      "best_epoch": 80,
+      "threshold": 0.7999999999999999,
+      "best_epoch": 79,
       "epochs_run": 80,
-      "validation_roc_auc": 0.8894603174603175,
-      "validation_balanced_accuracy": 0.8128571428571428,
+      "validation_roc_auc": 0.8876825396825396,
+      "validation_balanced_accuracy": 0.7961904761904761,
       "pos_weight": 0.30952380952380953,
       "parameters": 42820,
-      "training_seconds": 15.181966667005327
+      "training_seconds": 21.72955383299268
     },
     "scaffold_lr": {
       "C": 0.1,
@@ -117,41 +117,41 @@
     },
     "scaffold_gnn_17": {
       "seed": 17,
-      "threshold": 0.58,
-      "best_epoch": 65,
+      "threshold": 0.715,
+      "best_epoch": 77,
       "epochs_run": 80,
-      "validation_roc_auc": 0.9111046511627907,
-      "validation_balanced_accuracy": 0.8460755813953489,
+      "validation_roc_auc": 0.9125581395348837,
+      "validation_balanced_accuracy": 0.854796511627907,
       "pos_weight": 0.3057929724596391,
       "parameters": 42820,
-      "training_seconds": 13.96802270799526
+      "training_seconds": 20.18475433299318
     },
     "scaffold_gnn_29": {
       "seed": 29,
-      "threshold": 0.5399999999999999,
-      "best_epoch": 72,
+      "threshold": 0.7849999999999999,
+      "best_epoch": 67,
       "epochs_run": 80,
-      "validation_roc_auc": 0.9137790697674418,
-      "validation_balanced_accuracy": 0.8443313953488372,
+      "validation_roc_auc": 0.9179069767441861,
+      "validation_balanced_accuracy": 0.8540697674418605,
       "pos_weight": 0.3057929724596391,
       "parameters": 42820,
-      "training_seconds": 13.794804250006564
+      "training_seconds": 18.394631625007605
     },
     "scaffold_gnn_43": {
       "seed": 43,
-      "threshold": 0.8649999999999999,
-      "best_epoch": 64,
-      "epochs_run": 79,
-      "validation_roc_auc": 0.9240116279069768,
-      "validation_balanced_accuracy": 0.8579941860465117,
+      "threshold": 0.8999999999999999,
+      "best_epoch": 49,
+      "epochs_run": 64,
+      "validation_roc_auc": 0.9113372093023255,
+      "validation_balanced_accuracy": 0.8223837209302325,
       "pos_weight": 0.3057929724596391,
       "parameters": 42820,
-      "training_seconds": 13.633179625001503
+      "training_seconds": 15.183041999989655
     }
   },
   "sources": {
-    "molecular_utils.py": "1ec578182831ad50674d2f89f8f65d9b5227ac42bbf53f70497adbfd3893ef5d",
-    "run_experiments.py": "bd2e1d84e9a6a3643cb3d9fc551ce125c46e767fc6f3d9da68bd4e6068fc568f"
+    "molecular_utils.py": "b9059b167a8167622ae59564bd201df91e9d48754796c6891b61d559a8527c70",
+    "run_experiments.py": "79661c3b63cb3234705fb2b1466a2c88bc00e9cc00f8a7d46e43505e4fba9c84"
   },
   "split_manifest_sha256": "b38ae54de2a7a0fd167120a0dfec11f03f0c9c45125c10658e728407d57d443c",
   "test_evaluation_started": true,
