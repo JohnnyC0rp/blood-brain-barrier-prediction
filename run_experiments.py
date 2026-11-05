@@ -323,7 +323,7 @@ def run_pipeline(reuse_results=True):
     lock['test_evaluation_started']=True; lock['test_evaluation_completed']=True
     save_json(OUT/'evaluation_lock.json',lock)
     artifacts={str(p.relative_to(ROOT)):file_hash(p) for p in OUT.rglob('*')
-               if p.is_file() and p.name!='manifest.json'}
+               if p.is_file() and p.name!='manifest.json' and p.suffix!='.html'}
     save_json(manifest_path,dict(sources=source_manifest(),config=CONFIG,artifacts=artifacts))
     print(f'Complete: {milestones["total_seconds"]:.1f}s; summary={OUT/"summary.json"}',flush=True)
     return summary

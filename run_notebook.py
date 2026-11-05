@@ -12,6 +12,13 @@ from nbclient import NotebookClient
 from nbconvert import HTMLExporter
 
 
+class LoggedNotebookClient(NotebookClient):
+    def process_message(self, msg, cell, cell_index):
+        if msg['msg_type'] == 'stream':
+            print(msg['content']['text'], end='', flush=True)
+        return super().process_message(msg, cell, cell_index)
+
+
 def main():
     root = Path(__file__).resolve().parent
     os.chdir(root)
@@ -28,13 +35,26 @@ def main():
         previous = os.environ.get('JUPYTER_PATH')
         os.environ['JUPYTER_PATH'] = directory + (os.pathsep + previous if previous else '')
         try:
-            NotebookClient(notebook, timeout=7200, kernel_name='bbbp-local',
+            LoggedNotebookClient(notebook, timeout=7200, kernel_name='bbbp-local',
                            resources={'metadata': {'path': str(root)}}).execute()
         finally:
             if previous is None:
                 os.environ.pop('JUPYTER_PATH', None)
             else:
                 os.environ['JUPYTER_PATH'] = previous
+    # Keep machine-specific home paths out of published warning/output text.
+    def redact_paths(value):
+        if isinstance(value, str):
+            return value.replace(str(root), '.').replace(str(Path.home()), '~')
+        if isinstance(value, list):
+            return [redact_paths(item) for item in value]
+        if isinstance(value, dict):
+            return {key: redact_paths(item) for key, item in value.items()}
+        return value
+
+    for cell in notebook.cells:
+        if cell.cell_type == 'code':
+            cell.outputs = [nbformat.from_dict(redact_paths(output)) for output in cell.outputs]
     nbformat.write(notebook, root / 'blood_brain_barrier.ipynb')
     html, _ = HTMLExporter().from_notebook_node(notebook)
     (root / 'outputs' / 'blood_brain_barrier.html').write_text(html)
