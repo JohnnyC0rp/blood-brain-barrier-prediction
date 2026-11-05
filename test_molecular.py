@@ -1,8 +1,13 @@
 """Checks for molecular invariance, bond use, and graph batching integrity."""
 
 import unittest
+import tempfile
+from pathlib import Path
+from unittest.mock import patch
 
+import pandas as pd
 import torch
+from rdkit import Chem
 from torch_geometric.data import Batch
 from torch_geometric.utils import from_smiles
 
@@ -53,6 +58,25 @@ class MolecularChecks(unittest.TestCase):
         self.graphs[-1].record_id = torch.tensor([0])
         with self.assertRaises(AssertionError):
             check_batches(self.graphs, batch_size=2)
+
+    def test_structure_figures_save_with_jupyter_renderer_installed(self):
+        from rdkit.Chem.Draw import IPythonConsole
+        import run_experiments
+        IPythonConsole.InstallIPythonRenderer()
+        smiles = ['CCc1ccccc1', 'CCCc1ccccc1', 'CCCCc1ccccc1',
+                  'COc1ccccc1', 'CCOc1ccccc1', 'CCCOc1ccccc1']
+        graphs = [from_smiles(s) for s in smiles]
+        molecules = [Chem.MolFromSmiles(s) for s in smiles]
+        for i, graph in enumerate(graphs):
+            graph.y = torch.tensor([[float(i % 2)]])
+        frame = pd.DataFrame([dict(record_id=i, smiles=s, label=i % 2,
+                                   atoms=m.GetNumAtoms(), bonds=m.GetNumBonds())
+                              for i, (s, m) in enumerate(zip(smiles, molecules))])
+        with tempfile.TemporaryDirectory() as directory:
+            folder = Path(directory)
+            with patch.object(run_experiments, 'FIG', folder), patch.object(run_experiments, 'TABLES', folder):
+                run_experiments.inspect_figures(graphs, molecules, frame)
+            self.assertGreater((folder / 'molecule_examples.png').stat().st_size, 0)
 
 
 if __name__ == '__main__':
